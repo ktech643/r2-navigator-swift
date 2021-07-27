@@ -42,18 +42,29 @@ public protocol SelectableNavigatorDelegate: NavigatorDelegate {
     /// Implement this delegate method to validate the selection before showing a particular action. For example, making
     /// sure the selected text is not too large for a definition look up:
     ///
-    ///     public func navigator(_ navigator: SelectableNavigator, canPerformAction action: EditingAction, for selection: Selection) -> Bool {
-    ///         switch action {
-    ///         case .lookup:
-    ///             return (selection.locator.text.highlight?.count ?? 0) <= 50
-    ///         default:
-    ///             return true
-    ///         }
-    ///     }
+         public func navigator(_ navigator: SelectableNavigator, canPerformAction action: EditingAction, for selection: Selection) -> Bool
+//     /{
+//    /         switch action {
+//    /         case .lookup:
+//    /             return (selection.locator.text.highlight?.count ?? 0) <= 50
+//    /         default:
+//    /             return true
+//    /         }
+//    /     }
     func navigator(_ navigator: SelectableNavigator, canPerformAction action: EditingAction, for selection: Selection) -> Bool
 }
 
 public extension SelectableNavigatorDelegate {
     func navigator(_ navigator: SelectableNavigator, shouldShowMenuForSelection selection: Selection) -> Bool { false }
     func navigator(_ navigator: SelectableNavigator, canPerformAction action: EditingAction, for selection: Selection) -> Bool { false }
+    public func navigator(_ navigator: SelectableNavigator, canPerformAction action: EditingAction, for selection: Selection) -> Bool{
+        switch action {
+        case .lookup:
+            return (selection.locator.text.highlight?.count ?? 0) <= 50
+        case .copy:
+            return false
+        default:
+            return true
+        }
+    }
 }

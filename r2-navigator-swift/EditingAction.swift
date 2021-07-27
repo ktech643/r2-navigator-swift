@@ -94,11 +94,12 @@ final class EditingActionsController {
     /// Current user selection contents and frame in the publication view.
     var selection: Selection? {
         didSet {
-            if let selection = selection {
-                isEnabled = delegate?.editingActions(self, shouldShowMenuForSelection: selection) ?? true
-            } else {
-                isEnabled = false
-            }
+//            if let selection = selection {
+//                isEnabled = delegate?.editingActions(self, shouldShowMenuForSelection: selection) ?? true
+//            } else {
+//                isEnabled = false
+//            }
+            isEnabled = false
             updateSharedMenuController()
         }
     }
