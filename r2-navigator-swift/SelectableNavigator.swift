@@ -54,6 +54,6 @@ public protocol SelectableNavigatorDelegate: NavigatorDelegate {
 }
 
 public extension SelectableNavigatorDelegate {
-    func navigator(_ navigator: SelectableNavigator, shouldShowMenuForSelection selection: Selection) -> Bool { true }
-    func navigator(_ navigator: SelectableNavigator, canPerformAction action: EditingAction, for selection: Selection) -> Bool { true }
+    func navigator(_ navigator: SelectableNavigator, shouldShowMenuForSelection selection: Selection) -> Bool { false }
+    func navigator(_ navigator: SelectableNavigator, canPerformAction action: EditingAction, for selection: Selection) -> Bool { false }
 }
