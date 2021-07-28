@@ -127,8 +127,8 @@ final class EditingActionsController {
                 .filter { delegate?.editingActions(self, canPerformAction: $0, for: selection) ?? true }
                 .compactMap { $0.menuItem }
         }
-        UIMenuController.shared.menuItems = items
-        UIMenuController.shared.update()
+//        UIMenuController.shared.menuItems = items
+//        UIMenuController.shared.update()
     }
 
     
@@ -151,7 +151,7 @@ final class EditingActionsController {
             return
         }
         
-        UIPasteboard.general.string = text
+       // UIPasteboard.general.string = text
     }
     
     
@@ -174,7 +174,7 @@ final class EditingActionsController {
         let viewController = UIActivityViewController(activityItems: [text], applicationActivities: nil)
         viewController.completionWithItemsHandler = { _, completed, _, _ in
             if (completed) {
-                self.copy()
+              //  self.copy()
             }
         }
         viewController.popoverPresentationController?.sourceView = contentsView
