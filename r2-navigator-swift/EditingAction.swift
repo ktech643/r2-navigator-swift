@@ -141,11 +141,13 @@ final class EditingActionsController {
 
     /// Copies the authorized portion of the selection text into the pasteboard.
     func copy() {
+        delegate?.editingActionsDidPreventCopy(self)
+        return
         guard let text = selection?.locator.text.highlight else {
             return
         }
         guard rights.copy(text: text) else {
-            delegate?.editingActionsDidPreventCopy(self)
+            
             return
         }
         
